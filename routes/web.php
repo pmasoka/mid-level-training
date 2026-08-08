@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,6 +11,8 @@ Route::get('/', function () {
     Route::middleware('auth')->group(function () {
     Route::post('/posts', [PostController::class, 'store']);
     Route::get('/posts/create', [PostController::class, 'create']);
+
+    Route::post('/users', [UserController::class, 'store']);
 
     Route::get('/posts/{post}/edit', [PostController::class, 'edit']);
     Route::post('/api/posts', [PostController::class, 'store']);
